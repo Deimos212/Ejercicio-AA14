@@ -50,13 +50,13 @@ public class FabricaChoco implements Produccion{
 	
 	@Override
 	public void produccionActiva() {
-		String produccion = "	Nombre						CANTIDAD PRODUCIDA"
-				+ "- Chocolate Blanco					1000"
-				+ "- Chocolate Negro					1500"
-				+ "- Chocolate con almendras			1200"
-				+ "- Chocolate con castañas de caju	1300"
-				+ "- Chocolate en rama					100"
-				+ "- Chocolate con 70% de cacao		1500";
+		String produccion = "	Nombre						CANTIDAD PRODUCIDA\\n"
+				+ "- Chocolate Blanco					1000\\n"
+				+ "- Chocolate Negro					1500\\n"
+				+ "- Chocolate con almendras			1200\\n"
+				+ "- Chocolate con castañas de caju	1300\\n"
+				+ "- Chocolate en rama					100\\n"
+				+ "- Chocolate con 70% de cacao		1500\\n";
 		
 		try {
 			String fecha = LocalDate.now().toString();
