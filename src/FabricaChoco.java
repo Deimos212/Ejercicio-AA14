@@ -39,9 +39,8 @@ public class FabricaChoco implements Produccion{
 					System.out.println("Hoy no se producirá chocolate.");
 				} else {
 					System.out.println("Condiciones aceptables para la producción.");
-					System.out.println("Producciendo chocolate...");
+					System.out.println("Producciendo chocolate...\n");
 					new FabricaChoco().produccionActiva();
-					System.out.println("Chocolate producido.");
 				}
 			}
 		} catch (Exception e) {
@@ -76,7 +75,7 @@ public class FabricaChoco implements Produccion{
 			}
 			prod+="- Chocolate " + chocos.get(i).nombre + "\\t\\t\\t\\t" + cantidad.get(i)+"\\n";
 		}
-		
+		System.out.println(prod.replace("\\t", "\t").replace("\\n", "\n"));
 		try {
 			String fecha = LocalDate.now().toString();
 			Files.write(Paths.get("salida_"+fecha+".txt"), Arrays.asList(prod.replace("\\t", "\t").replace("\\n", "\n")), StandardCharsets.UTF_8);
