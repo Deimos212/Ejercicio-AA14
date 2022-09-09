@@ -8,6 +8,7 @@ import java.nio.file.Paths;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.LinkedList;
 import java.util.Scanner;
 
 import org.json.JSONObject;
@@ -50,17 +51,35 @@ public class FabricaChoco implements Produccion{
 	
 	@Override
 	public void produccionActiva() {
-		String produccion = "	Nombre						CANTIDAD PRODUCIDA\\n"
-				+ "- Chocolate Blanco					1000\\n"
-				+ "- Chocolate Negro					1500\\n"
-				+ "- Chocolate con almendras			1200\\n"
-				+ "- Chocolate con castañas de caju	1300\\n"
-				+ "- Chocolate en rama					100\\n"
-				+ "- Chocolate con 70% de cacao		1500\\n";
+		LinkedList<Chocolate> chocos = new LinkedList<Chocolate>();
+		chocos.add(new Chocolate("Blanco", "Choco", 180, 72 ));
+		chocos.add(new Chocolate("Negro", "Choco", 260, 90 ));
+		chocos.add(new Chocolate("con almendras", "Choco", 200, 43 ));
+		chocos.add(new Chocolate("con castañas de caju", "Choco", 270, 78 ));
+		chocos.add(new Chocolate("en rama", "Choco", 226, 76 ));
+		chocos.add(new Chocolate("con 70% de cacao", "Choco", 215, 70 ));
+		LinkedList<Integer> cantidad = new LinkedList<Integer>();
+		cantidad.add(1000);
+		cantidad.add(1500);
+		cantidad.add(1200);
+		cantidad.add(1300);
+		cantidad.add(100);
+		cantidad.add(1500);
+		String prod = "\\tNOMBRE\\t\\t\\t\\t\\t\\t\\t\\tCANTIDAD PRODUCIDA\\n";
+		for (int i = 0; i < chocos.size(); i++) {
+			// Tabs equalizer
+			if (chocos.get(i).nombre.length() < 20) {
+				int tabs = 20/4 - chocos.get(i).nombre.length() / 4;
+				for (int j = 0; j < tabs; j++) {
+					chocos.get(i).nombre+="\\t";
+				}
+			}
+			prod+="- Chocolate " + chocos.get(i).nombre + "\\t\\t\\t\\t" + cantidad.get(i)+"\\n";
+		}
 		
 		try {
 			String fecha = LocalDate.now().toString();
-			Files.write(Paths.get("salida_"+fecha+".txt"), Arrays.asList(produccion), StandardCharsets.UTF_8);
+			Files.write(Paths.get("salida_"+fecha+".txt"), Arrays.asList(prod.replace("\\t", "\t").replace("\\n", "\n")), StandardCharsets.UTF_8);
 		} catch (IOException e1) {
 			e1.printStackTrace();
 		}
@@ -74,7 +93,7 @@ public class FabricaChoco implements Produccion{
 				+ "      stage('Hello') {\r\n"
 				+ "         steps {\r\n"
 				+ "			  script{\r\n"
-				+ "				println \""+produccion+"\"\r\n"
+				+ "				println \""+prod+"\"\r\n"
 				+ "			  }\r\n"
 				+ "         }\r\n"
 				+ "      }\r\n"
