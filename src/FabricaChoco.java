@@ -50,12 +50,12 @@ public class FabricaChoco implements Produccion{
 	
 	@Override
 	public void produccionActiva() {
-		String produccion = "	Nombre						CANTIDAD PRODUCIDA\r\n"
-				+ "- Chocolate Blanco					1000\r\n"
-				+ "- Choclate Negro					1500\r\n"
-				+ "- Chocolate con almendras			1200\r\n"
-				+ "- Chocolate con castañas de caju	1300\r\n"
-				+ "- Chocolate en rama					100\r\n"
+		String produccion = "	Nombre						CANTIDAD PRODUCIDA"
+				+ "- Chocolate Blanco					1000"
+				+ "- Chocolate Negro					1500"
+				+ "- Chocolate con almendras			1200"
+				+ "- Chocolate con castañas de caju	1300"
+				+ "- Chocolate en rama					100"
 				+ "- Chocolate con 70% de cacao		1500";
 		
 		try {
